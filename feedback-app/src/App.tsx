@@ -5,7 +5,7 @@ import FeedbackItem from './components/FeedbackItem'
 function App() {
   return (
     <>
-      <Header text="Header component" bgColor="blue" textColor="white" />
+      <Header />
       <div className="container">
         <FeedbackItem />
       </div>

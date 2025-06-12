@@ -1,10 +1,14 @@
 type HeaderProps = {
-  text: string
-  bgColor: string
-  textColor: string
+  text?: string
+  bgColor?: string
+  textColor?: string
 }
 
-function Header({ text, bgColor, textColor }: HeaderProps) {
+function Header({
+  text = 'Feedback UI',
+  bgColor = 'rgba(0,0,0,0.4)',
+  textColor = '#ff6a95',
+}: HeaderProps) {
   const headerStyles = {
     backgroundColor: bgColor,
     color: textColor,
