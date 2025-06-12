@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
 type CardProps = {
-  children: ReactElement[]
+  children: ReactElement | ReactElement[]
   reverse?: boolean
 }
 function Card({ children, reverse = false }: CardProps) {

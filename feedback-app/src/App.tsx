@@ -4,6 +4,7 @@ import Header from './components/Header'
 import FeedbackList from './components/FeedbackList'
 import FeedbackData from './data/FeedbackData'
 import FeedbackStats from './components/FeedbackStats'
+import FeedbackForm from './components/FeedbackForm'
 
 function App() {
   // Access feedback data & function to update the data
@@ -19,6 +20,7 @@ function App() {
     <>
       <Header />
       <div className="container">
+        <FeedbackForm />
         <FeedbackStats feedbackData={feedbackData} />
         {/* Have to pass handleDelete from here, since this is where the data is */}
         <FeedbackList
