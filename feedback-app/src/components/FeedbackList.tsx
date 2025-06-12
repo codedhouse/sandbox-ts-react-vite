@@ -8,9 +8,10 @@ type FeedbackDataItem = {
 
 type FeedbackListProps = {
   feedbackData?: FeedbackDataItem[]
+  handleDelete: Function
 }
 
-function FeedbackList({ feedbackData }: FeedbackListProps) {
+function FeedbackList({ feedbackData, handleDelete }: FeedbackListProps) {
   if (!feedbackData || feedbackData.length === 0) {
     return <p>There are no feedback items yet.</p>
   }
@@ -18,7 +19,7 @@ function FeedbackList({ feedbackData }: FeedbackListProps) {
   return (
     <div className="feedback-list">
       {feedbackData.map((item) => (
-        <FeedbackItem key={item.id} item={item} />
+        <FeedbackItem key={item.id} item={item} handleDelete={handleDelete} />
       ))}
     </div>
   )
