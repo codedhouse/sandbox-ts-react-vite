@@ -2,12 +2,28 @@ import { useState } from 'react'
 import Card from './shared/Card'
 import Button from './shared/Button'
 
-// Usually, we need a piece of state for each form input
-
 function FeedbackForm() {
+  // Usually, we need a piece of state for each form input
   const [text, setText] = useState('')
+  const [btnDisabled, setBtnDisabled] = useState(true)
+  const [message, setMessage] = useState('')
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentText = e.currentTarget.value
+    if (currentText === '') {
+      setBtnDisabled(true)
+      setMessage('')
+    } else if (currentText.trim().length < 10) {
+      console.log(currentText.length)
+      console.log(currentText)
+      setMessage('Text must be at least 10 characters.')
+      setBtnDisabled(true)
+    } else {
+      console.log('ok ' + currentText)
+      setMessage('')
+      setBtnDisabled(false)
+    }
+
     setText(e.currentTarget.value)
   }
 
@@ -23,8 +39,12 @@ function FeedbackForm() {
             placeholder="Write a review"
             value={text}
           />
-          <Button type="submit">Send</Button>
+          <Button type="submit" isDisabled={btnDisabled}>
+            Send
+          </Button>
         </div>
+
+        {message && <div className="message">{message}</div>}
       </form>
     </Card>
   )
