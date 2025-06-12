@@ -1,14 +1,18 @@
-import { useState } from 'react'
+type FeedbackDataItem = {
+  id: number
+  rating: number
+  text: string
+}
 
-function FeedbackItem() {
-  // Set default rating to 7
-  const [rating, setRating] = useState(7)
-  const [feedback, setText] = useState('This is an example feedback item.')
+type FeedbackItemProps = {
+  item: FeedbackDataItem
+}
 
+function FeedbackItem({ item }: FeedbackItemProps) {
   return (
     <div className="card">
-      <div className="num-display">{rating}</div>
-      <div className="text-display">{feedback}</div>
+      <div className="num-display">{item.rating}</div>
+      <div className="text-display">{item.text}</div>
     </div>
   )
 }
