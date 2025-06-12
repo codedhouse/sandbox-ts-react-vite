@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type FormEventHandler } from 'react'
 import Card from './shared/Card'
 import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
@@ -27,9 +27,18 @@ function FeedbackForm() {
     setText(e.currentTarget.value)
   }
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault() // prevent default behavior of submitting the form to the server
+    // Useful to check length again cause there are ways to hack the form limit before submitting
+    if (text.trim().length >= 10) {
+      const newFeedback = { text, rating }
+      console.log(newFeedback)
+    }
+  }
+
   return (
     <Card>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>How would you rate your service with us?</h2>
         <RatingSelect select={(rating: number) => setRating(rating)} />
         <div className="input-group">
