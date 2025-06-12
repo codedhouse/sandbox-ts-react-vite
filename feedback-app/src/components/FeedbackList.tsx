@@ -1,4 +1,3 @@
-import type { ReactElement } from 'react'
 import FeedbackItem from './FeedbackItem'
 
 type FeedbackDataItem = {
