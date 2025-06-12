@@ -10,16 +10,14 @@ function FeedbackForm() {
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const currentText = e.currentTarget.value
+
     if (currentText === '') {
       setBtnDisabled(true)
       setMessage('')
     } else if (currentText.trim().length < 10) {
-      console.log(currentText.length)
-      console.log(currentText)
       setMessage('Text must be at least 10 characters.')
       setBtnDisabled(true)
     } else {
-      console.log('ok ' + currentText)
       setMessage('')
       setBtnDisabled(false)
     }
