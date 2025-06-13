@@ -10,6 +10,8 @@ import AboutIconLink from './components/AboutIconLink'
 // Import all routes
 import About from './pages/About'
 
+import { FeedbackProvider } from './context/FeedbackContext'
+
 type FeedbackObj = {
   id: number
   rating: number
@@ -42,29 +44,31 @@ function App() {
   }
 
   return (
-    <Router>
-      <Header />
-      <div className="container">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <FeedbackForm handleAdd={addFeedback} />
-                <FeedbackStats feedbackData={feedbackData} />
-                {/* Have to pass handleDelete from here, since this is where the data is */}
-                <FeedbackList
-                  feedbackData={feedbackData}
-                  handleDelete={deleteFeedback}
-                />
-              </>
-            }
-          ></Route>
-          <Route path="/about" element={<About />} />
-        </Routes>
-        <AboutIconLink />
-      </div>
-    </Router>
+    <FeedbackProvider>
+      <Router>
+        <Header />
+        <div className='container'>
+          <Routes>
+            <Route
+              path='/'
+              element={
+                <>
+                  <FeedbackForm handleAdd={addFeedback} />
+                  <FeedbackStats feedbackData={feedbackData} />
+                  {/* Have to pass handleDelete from here, since this is where the data is */}
+                  <FeedbackList
+                    feedbackData={feedbackData}
+                    handleDelete={deleteFeedback}
+                  />
+                </>
+              }
+            ></Route>
+            <Route path='/about' element={<About />} />
+          </Routes>
+          <AboutIconLink />
+        </div>
+      </Router>
+    </FeedbackProvider>
   )
 }
 
