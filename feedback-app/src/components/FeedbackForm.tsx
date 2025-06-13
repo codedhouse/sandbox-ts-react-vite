@@ -1,9 +1,13 @@
-import { useState, type FormEventHandler } from 'react'
+import { useState } from 'react'
 import Card from './shared/Card'
 import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
 
-function FeedbackForm() {
+type FeedbackFormProps = {
+  handleAdd: Function
+}
+
+function FeedbackForm({ handleAdd }: FeedbackFormProps) {
   // Usually, we need a piece of state for each form input
   const [rating, setRating] = useState(10)
   const [text, setText] = useState('')
@@ -29,10 +33,11 @@ function FeedbackForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault() // prevent default behavior of submitting the form to the server
-    // Useful to check length again cause there are ways to hack the form limit before submitting
+
+    // Check length again cause there are ways to hack the form limit before submitting
     if (text.trim().length >= 10) {
-      const newFeedback = { text, rating }
-      console.log(newFeedback)
+      const newFeedback = { text, rating } // This appears to work despite not having an id property
+      handleAdd(newFeedback)
     }
   }
 
