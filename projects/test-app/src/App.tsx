@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 // test code
 import { TestAlert } from './components/TestAlert'
+import { EmailInput } from './components/EmailInput'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +15,7 @@ function App() {
         <TestAlert heading="Success" closable>
           Everything is really good!
         </TestAlert>
+        <EmailInput />
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
