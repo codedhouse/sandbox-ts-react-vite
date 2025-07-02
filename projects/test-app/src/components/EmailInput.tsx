@@ -1,6 +1,8 @@
 import { useState, type FocusEvent } from 'react'
 
 export function EmailInput() {
+  // 1st element is always the current value
+  // 2nd element is always a function that sets the state to a new value
   const [errorInfo, setErrorInfo] = useState('')
 
   // input validation
